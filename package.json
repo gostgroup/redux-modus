@@ -1,10 +1,11 @@
 {
-  "name": "redux-modus",
+  "name": "@gostgroup/redux-modus",
   "version": "0.1.7",
   "description": "Well typed lightweight alternative to redux-act",
   "files": [
     "lib"
   ],
+  "private": false,
   "publishConfig": {
     "registry": "https://registry.npmjs.org/."
   },
@@ -13,7 +14,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development parcel index.html",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,7 @@
     "redux",
     "typescript"
   ],
-  "author": "Gostgroup frontend team",
+  "author": "GostGroup frontend team",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gostgroup/redux-modus/issues"
