@@ -1,7 +1,7 @@
 {
   "name": "@gostgroup/redux-modus",
   "version": "0.1.7",
-  "description": "Well typed lightweight alternative to redux-act",
+  "description": "Well typed lightweight redux workflow helper.",
   "files": [
     "lib"
   ],
