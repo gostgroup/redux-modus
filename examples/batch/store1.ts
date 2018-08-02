@@ -1,6 +1,6 @@
 import { actionFactory, createReducer } from './../../src';
 
-export type Store1 = Record<string, any>;
+export type Store1 = Record<string, number>;
 
 const initialState: Store1 = {
   p1: 0,

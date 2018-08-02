@@ -1,3 +1,4 @@
+import { Reducer as ReduxReducer, Action as ReduxAction } from 'redux';
 import { BatchedMeta } from './batchActions';
 
 /**
@@ -24,8 +25,7 @@ type DefaultMetaType = BatchedMeta | undefined;
 /**
  * FSA-compatible action type
  */
-export interface FSA<P, M = DefaultMetaType> {
-  type: string;
+export interface FSA<P, M = DefaultMetaType> extends ReduxAction<string> {
   payload?: P;
   error?: boolean;
   meta?: M;
@@ -49,23 +49,24 @@ export type PayloadReducerArg1<Arg1, P> = (arg1: Arg1) => P;
 export type PayloadReducerArg2<Arg1, Arg2, P> = (arg1: Arg1, arg2: Arg2) => P;
 export type PayloadReducerArg3<Arg1, Arg2, Arg3, P> = (arg1: Arg1, arg2: Arg2, arg3: Arg3) => P;
 
-export interface Reducer<S> {
-  (state: S | undefined, action: FSA<any>): S;
+export interface Reducer<S, A extends FSA<any>> extends ReduxReducer<S, A> {
+  on<P, M = DefaultMetaType>(actionCreator: ComplexNoArgActionCreator<P, M> | string, reduceFunction: ReduceFunction<S, P, M>): Reducer<S, A>;
 
-  on<P, M = DefaultMetaType>(actionCreator: ComplexNoArgActionCreator<P, M> | string, reduceFunction: ReduceFunction<S, P, M>): Reducer<S>;
-  on<Arg1, P, M = DefaultMetaType>(actionCreator: ComplexArg1ActionCreator<Arg1, P, M> | string, reduceFunction: ReduceFunction<S, P, M>): Reducer<S>;
+  on<Arg1, P, M = DefaultMetaType>(
+    actionCreator: ComplexArg1ActionCreator<Arg1, P, M> | string, reduceFunction: ReduceFunction<S, P, M>,
+  ): Reducer<S, A>;
 
   on<Arg1, Arg2, P, M = DefaultMetaType>(
     actionCreator: ComplexArg2ActionCreator<Arg1, Arg2, P, M> | string,
     reduceFunction: ReduceFunction<S, P, M>,
-  ): Reducer<S>;
+  ): Reducer<S, A>;
 
   on<Arg1, Arg2, Arg3, P, M = DefaultMetaType>(
     actionCreator: ComplexArg3ActionCreator<Arg1, Arg2, Arg3, P, M> | string,
     reduceFunction: ReduceFunction<S, P, M>,
-  ): Reducer<S>;
+  ): Reducer<S, A>;
 
-  on<P, M = DefaultMetaType>(actionCreator: SimpleOptArgActionCreator<P> | string, reduceFunction: ReduceFunction<S, P, M>): Reducer<S>;
+  on<P, M = DefaultMetaType>(actionCreator: SimpleOptArgActionCreator<P> | string, reduceFunction: ReduceFunction<S, P, M>): Reducer<S, A>;
 }
 
 export interface CreateAction {

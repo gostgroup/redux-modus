@@ -1,6 +1,6 @@
 {
   "name": "@gostgroup/redux-modus",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Well typed lightweight redux workflow helper.",
   "files": [
     "lib"
@@ -31,12 +31,13 @@
     "url": "https://github.com/gostgroup/redux-modus/issues"
   },
   "homepage": "https://github.com/gostgroup/redux-modus#readme",
-  "dependencies": {},
+  "dependencies": {
+    "redux": "^4.0.0"
+  },
   "devDependencies": {
     "@types/redux-logger": "^3.0.6",
     "cross-env": "^5.1.6",
     "parcel-bundler": "^1.8.1",
-    "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.9.2",

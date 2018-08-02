@@ -1,11 +1,11 @@
 import { Reducer, ReduceFunction, FSA } from './types';
 import { reduceBatchedActions, BatchedPayload } from './batchActions';
 
-export default function createReducer<S>(
+export default function createReducer<S, A extends FSA<any> = FSA<any>>(
   initialState: S,
   initialReducersMap: Record<string, ReduceFunction<S>> = {},
-): Reducer<S> {
-  const rootReducer: Reducer<S> = Object.assign(reduce, {
+): Reducer<S, A> {
+  const rootReducer: Reducer<S, A> = Object.assign(reduce, {
     on,
   });
 
