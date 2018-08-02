@@ -1,3 +1,6 @@
+/**
+ * TypeScript 2.8+ required
+ */
 import { ActionFactory, FSA, CreateAction, Reducer } from './types';
 
 import createAction from './createAction';
