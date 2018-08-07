@@ -1,7 +1,7 @@
 /**
- * TypeScript 2.8+ required
+ * TypeScript 3.0+ required
  */
-import { ActionFactory, FSA, CreateAction, Reducer } from './types';
+import { FSA } from './types';
 
 import createAction from './createAction';
 import createReducer from './createReducer';
@@ -13,18 +13,14 @@ export {
   batchActions,
 
   FSA,
-  CreateAction,
-  ActionFactory,
-  Reducer,
 };
 
+/* tslint:disable:trailing-comma */
 export const actionFactory = (
-  (namespace: string, separator: string = '/') => (
-    actionName: any,
-    payloadReducer?: any,
-    metaReducer?: any,
-  ) => createAction(`${namespace}${separator}${actionName}`, payloadReducer, metaReducer)
-) as any as ActionFactory;
+  (namespace: string, separator: string = '/') => <Args extends any[]>(
+    ...args: Args
+  ) => createAction(`${namespace}${separator}${args[0] as string}`, args[1], args[2])
+) as (namespace: string, separator?: string) => typeof createAction;
 
 /**
  * Если мы хотим дополнить имя типа экшена, то можно воспользоваться этой функцией,

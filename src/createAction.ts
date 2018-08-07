@@ -1,11 +1,13 @@
-import { CreateAction } from './types';
 
-const createAction: CreateAction = (actionName: any, payloadReducer?: any, metaReducer?: any) => {
-
-  function actionCreator(...args: any[]) {
+const createAction = <Payload, PayloadArgs extends any[] = any[], Meta = any>(
+  actionName: string,
+  payloadReducer?: (...pArgs: PayloadArgs) => Payload,
+  metaReducer?: (...mArgs: PayloadArgs) => Meta,
+) => {
+  function actionCreator(...args: PayloadArgs) {
     const payload = typeof payloadReducer === 'function'
       ? payloadReducer(...args)
-      : args[0];
+      : args[0] as Payload;
 
     const baseAction = {
       payload,

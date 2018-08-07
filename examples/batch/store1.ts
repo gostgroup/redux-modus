@@ -1,4 +1,4 @@
-import { actionFactory, createReducer } from './../../src';
+import { createReducer, actionFactory } from './../../src';
 
 export type Store1 = Record<string, number>;
 
@@ -12,17 +12,17 @@ export const reducer = createReducer(initialState);
 
 const createAction = actionFactory('store1');
 
-export const incP1 = createAction('incP1');
-export const incP2 = createAction('incP2');
+export const incP1 = createAction('incP1', (a: string, b: number) => Promise.resolve(1), () => 2);
+export const incP2 = createAction<string>('incP2');
 export const incP3 = createAction('incP3');
 export const initState = createAction('initState');
 
 reducer
-  .on(incP1, s => ({
+  .on(incP1, (s, p, m) => ({
     ...s,
     p1: s.p1 + 1,
   }))
-  .on(incP2, s => ({
+  .on(incP2, (s, p) => ({
     ...s,
     p2: s.p2 + 1,
   }))

@@ -1,6 +1,6 @@
 {
   "name": "@gostgroup/redux-modus",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Well typed lightweight redux workflow helper.",
   "files": [
     "lib"
