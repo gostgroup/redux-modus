@@ -1,12 +1,12 @@
 import { Reducer as ReduxReducer } from 'redux';
 
-import { ReduceFunction, FSA } from './types';
+import { ReduceFunction, FSA, Reducer } from './types';
 import { reduceBatchedActions } from './batchActions';
 
-export default function createReducer<S>(
+export default function createReducer<S, A extends FSA>(
   initialState: S,
   initialReducersMap: Record<string, ReduceFunction<S>> = {},
-) {
+): Reducer<S, A> {
   const rootReducer = Object.assign(reduce as ReduxReducer, {
     on,
   });

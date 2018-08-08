@@ -1,7 +1,7 @@
-import { Action as ReduxAction } from 'redux';
+import { Action as ReduxAction, Reducer as ReduxReducer } from 'redux';
 
 /**
- * Unpackes some types:
+ * Unpacks some types:
  * - promise resolve type
  */
 export type Unpacked<T> =
@@ -29,3 +29,10 @@ export interface FSA<P = any, M = any> extends ReduxAction<string> {
 }
 
 export type ReduceFunction<S, P = any, M = any> = (state: S, payload: Unpacked<P>, meta: M) => S;
+
+export type Reducer<S, A extends FSA<any>> = {
+  on<Payload, PayloadArgs extends any[], Meta>(
+    actionCreator: (...args: PayloadArgs) => FSA<Payload, Meta>,
+    reduceFunction: ReduceFunction<S, Payload, Meta>,
+  ): Reducer<S, A>;
+} & ReduxReducer<S, A>;
