@@ -8,10 +8,10 @@ export type BatchedMeta = {
   batched: true;
 };
 export type BatchedPayload = {
-  actions: FSA<any>[];
+  actions: FSA[];
 };
 
-const batchActions = (actions: FSA<any>[]): FSA<BatchedPayload, BatchedMeta> => ({
+const batchActions = (actions: FSA[]): FSA<BatchedPayload, BatchedMeta> => ({
   meta: {
     batched: true,
   },
@@ -25,9 +25,9 @@ const batchActions = (actions: FSA<any>[]): FSA<BatchedPayload, BatchedMeta> => 
  * NOTE Promise payload type will be ignored and will be merged to store without resolving
  */
 export const reduceBatchedActions = <S extends Record<string, any>>(
-  reducersMap: Map<string, ReduceFunction<any>>,
+  reducersMap: Map<string, ReduceFunction<S>>,
   state: S,
-  actions: FSA<any>[],
+  actions: FSA[],
 ): S => {
   let newState: S = state;
 

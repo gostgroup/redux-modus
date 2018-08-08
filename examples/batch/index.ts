@@ -22,7 +22,7 @@ store.subscribe(() => {
 });
 
 console.log('single call actions');
-store.dispatch(store1.incP1());
+store.dispatch(store1.incP1('', 1));
 store.dispatch(store1.incP2());
 store.dispatch(store1.incP3());
 store.dispatch(store2.incP2());
@@ -33,7 +33,7 @@ store.dispatch(store2.initState());
 
 console.log('batched actions');
 store.dispatch(batchActions([
-  store1.incP1(),
+  store1.incP1('', 1),
   store1.incP2(),
   store1.incP3(),
   store2.incP2(),
