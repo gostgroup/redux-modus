@@ -2,7 +2,7 @@ import { Reducer as ReduxReducer, Action as ReduxAction } from 'redux';
 import { BatchedMeta } from './batchActions';
 
 /**
- * Unpackes some types:
+ * Unpacks some types:
  * - promise resolve type
  */
 export type Unpacked<T> =

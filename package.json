@@ -1,6 +1,6 @@
 {
   "name": "@gostgroup/redux-modus",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "description": "Well typed lightweight redux workflow helper.",
   "files": [
     "lib"
@@ -41,6 +41,6 @@
     "redux-logger": "^3.0.6",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.9.2",
-    "typescript": "^3.0.1"
+    "typescript": "^2.9.2"
   }
 }
