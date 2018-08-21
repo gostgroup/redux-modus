@@ -3,6 +3,9 @@ import { Reducer as ReduxReducer } from 'redux';
 import { ReduceFunction, FSA, Reducer } from './types';
 import { reduceBatchedActions } from './batchActions';
 
+/**
+ * Create type safe reducers handler
+ */
 export default function createReducer<S, A extends FSA>(
   initialState: S,
   initialReducersMap: Record<string, ReduceFunction<S>> = {},

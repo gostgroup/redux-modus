@@ -11,6 +11,9 @@ export type BatchedPayload = {
   actions: FSA[];
 };
 
+/**
+ * Batches actions into one action that will be reduced without triggering store updates for an every batched action
+ */
 const batchActions = (actions: FSA[]): FSA<BatchedPayload, BatchedMeta> => ({
   meta: {
     batched: true,

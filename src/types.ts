@@ -11,13 +11,14 @@ export type Unpacked<T> =
 /**
  * When you want to unpack action payload type.
  * For example in a middleware, where action may be any type and you want to cast to action type with unpacked payload field.
- * @example UnpackActionPayloadType<typeof someAction>
+ * @example UnpackActionPayload<typeof someAction>
  */
-export type UnpackActionPayloadType<ModusActionType extends (...args: any[]) => any> = {
-  [T in keyof ReturnType<ModusActionType>]: T extends 'payload'
-    ? Unpacked<ReturnType<ModusActionType>[T]>
-    : ReturnType<ModusActionType>[T];
-};
+export type ActionPayloadType<Action extends (...args: any[]) => FSA<any, any>> = Required<ReturnType<Action>>['payload'];
+
+/**
+ * In addition to resolving payload type it unpacks payload type via `Unpacked` utility type
+ */
+export type UnpackedActionPayloadType<Action extends (...args: any[]) => FSA<any, any>> = Unpacked<ActionPayloadType<Action>>;
 
 /**
  * FSA-compatible action type

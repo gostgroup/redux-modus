@@ -1,4 +1,7 @@
 
+/**
+ * Creates type safe action
+ */
 const createAction = <Payload, PayloadArgs extends any[] = any[], Meta = any>(
   actionName: string,
   payloadReducer?: (...pArgs: PayloadArgs) => Payload,

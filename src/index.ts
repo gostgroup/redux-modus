@@ -1,7 +1,6 @@
 /**
  * TypeScript 3.0+ required
  */
-import { FSA } from './types';
 
 import createAction from './createAction';
 import createReducer from './createReducer';
@@ -11,9 +10,12 @@ export {
   createAction,
   createReducer,
   batchActions,
-
-  FSA,
 };
+export {
+  FSA,
+  ActionPayloadType,
+  UnpackedActionPayloadType,
+} from './types';
 
 /* tslint:disable:trailing-comma */
 export const actionFactory = (
