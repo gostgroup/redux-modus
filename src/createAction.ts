@@ -2,7 +2,11 @@
 /**
  * Creates type safe action
  */
-const createAction = <Payload, PayloadArgs extends any[] = any[], Meta = any>(
+const createAction = <
+  Payload,
+  PayloadArgs extends any[] = [Payload],
+  Meta = any
+>(
   actionName: string,
   payloadReducer?: (...pArgs: PayloadArgs) => Payload,
   metaReducer?: (...mArgs: PayloadArgs) => Meta,
