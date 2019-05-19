@@ -1,5 +1,9 @@
 # redux-modus
 
+> ⚠️ Warning for a usage ⚠️
+>
+> The library is no longer actively maintained, but works stable in some our production projects.
+
 ## Important information about versions
 
 > `v0.x.x` (`0.x.x` branch) - TypeScript 2.9+ and old stable API
